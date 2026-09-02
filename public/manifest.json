@@ -1,0 +1,108 @@
+{
+  "dusun": [
+    {
+      "id": "gallea",
+      "nama": "Dusun Gallea",
+      "rumah": [
+        {
+          "id": "kadus-gallea-01",
+          "nama": "Rumah Kepala Dusun Gallea",
+          "rute_geojson": "routes/kadus-gallea.geojson",
+          "koordinat_akhir": [-5.55912,119.99694],
+          "langkah": []
+        }
+      ]
+    },
+    {
+      "id": "bombong",
+      "nama": "Dusun Bombong",
+      "rumah": [
+        {
+          "id": "kadus-bombong-01",
+          "nama": "Rumah Kepala Dusun Bombong",
+          "rute_geojson": "routes/kadus-bombong.geojson",
+          "koordinat_akhir": [-5.56092,120.00495],
+          "langkah": []
+        }
+      ]
+    },
+    {
+      "id": "biangkeke_lama",
+      "nama": "Dusun Biangkeke Lama",
+      "rumah": [
+        {
+          "id": "kadus-biangkeke-lama-01",
+          "nama": "Rumah Kepala Dusun Biangkeke Lama",
+          "rute_geojson": "routes/kadus-biangkeke_lama.geojson",
+          "koordinat_akhir": [-5.55082,120.00217],
+          "langkah": []
+        }
+      ]
+    },
+    {
+      "id": "erasayya",
+      "nama": "Dusun Erasayya",
+      "rumah": [
+        {
+          "id": "kadus-erasayya-01",
+          "nama": "Rumah Kepala Dusun Erasayya",
+          "rute_geojson": "routes/kadus-erasayya.geojson",
+          "koordinat_akhir": [-5.54167,120.0224],
+          "langkah": []
+        }
+      ]
+    },
+    {
+      "id": "makkaninong",
+      "nama": "Dusun Makkaninong",
+      "rumah": [
+        {
+          "id": "kadus-makkaninong-01",
+          "nama": "Rumah Kepala Dusun Makkaninong",
+          "rute_geojson": "routes/kadus-makkaninong.geojson",
+          "koordinat_akhir": [-5.56043,120.00277],
+          "langkah": []
+        }
+      ]
+    },
+    {
+      "id": "perumputan_baru",
+      "nama": "Dusun Perumputan Baru",
+      "rumah": [
+        {
+          "id": "kadus-perumputan_baru-01",
+          "nama": "Rumah Kepala Dusun Perumputan Baru",
+          "rute_geojson": "routes/kadus-perumputan_baru.geojson",
+          "koordinat_akhir": [-5.53993,120.01556],
+          "langkah": []
+        }
+      ]
+    },
+    {
+      "id": "samataring",
+      "nama": "Dusun Samataring",
+      "rumah": [
+        {
+          "id": "kadus-samataring-01",
+          "nama": "Rumah Kepala Dusun Samataring",
+          "rute_geojson": "routes/kadus-samataring.geojson",
+          "koordinat_akhir": [-5.54878,120.01372],
+          "langkah": []
+        }
+      ]
+    },
+    {
+      "id": "lambocca",
+      "nama": "Dusun Lambocca",
+      "rumah": [
+        {
+          "id": "kadus-lambocca-01",
+          "nama": "Rumah Kepala Dusun Lambocca",
+          "rute_geojson": "routes/kadus-lambocca.geojson",
+          "koordinat_akhir": [-5.56035,120.00065],
+          "langkah": []
+        }
+      ]
+    }
+  ]
+}
