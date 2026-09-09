@@ -13,19 +13,14 @@
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tsconfig/svelte": "^5.0.8",
     "@types/leaflet": "^1.9.22",
-    "autoprefixer": "^10.5.5",
-    "postcss": "^8.5.28",
     "svelte": "^5.56.10",
     "svelte-check": "^4.7.6",
-    "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
     "vite": "^8.2.2",
     "vite-tsconfig-paths": "^6.1.1"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
     "exifreader": "^4.44.1",
-    "exiftool-vendored": "^38.0.0",
     "leaflet": "^1.9.4"
   }
 }
