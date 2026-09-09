@@ -63,9 +63,9 @@
 
   onMount(() => {
     map = L.map(mapContainer, {
-      zoomControl: false,
+      zoomControl: true,
       attributionControl: false,
-      dragging: false,
+      dragging: true,
       touchZoom: false,
       scrollWheelZoom: false,
       doubleClickZoom: false,
@@ -102,7 +102,7 @@
   .minimap-wrapper {
     position: relative;
     width: 100%;
-    height: 105px;
+    height: 200px;
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid var(--border-color);

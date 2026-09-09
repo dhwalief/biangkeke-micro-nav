@@ -1,10 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import DusunSelect from "./components/DusunSelect.svelte";
-  import RumahSelect from "./components/RumahSelect.svelte";
   import Navigasi from "./components/Navigasi.svelte";
 
-  type Screen = "dusun" | "rumah" | "navigasi";
+  type Screen = "dusun" | "navigasi";
 
   let dusunList: any[] = [];
   let loading = true;
@@ -29,19 +28,11 @@
 
   function handleSelectDusun(dusun: any) {
     selectedDusun = dusun;
-    currentScreen = "rumah";
-  }
-
-  function handleSelectRumah(rumah: any) {
-    selectedRumah = rumah;
+    selectedRumah = dusun.rumah && dusun.rumah.length > 0 ? dusun.rumah[0] : null;
     currentScreen = "navigasi";
   }
 
   function handleExitToDusun() {
-    currentScreen = "dusun";
-  }
-
-  function handleBackToDusun() {
     currentScreen = "dusun";
   }
 </script>
@@ -57,12 +48,6 @@
       <DusunSelect 
         {dusunList} 
         onSelect={handleSelectDusun} 
-      />
-    {:else if currentScreen === "rumah" && selectedDusun}
-      <RumahSelect 
-        dusun={selectedDusun} 
-        onSelect={handleSelectRumah} 
-        onBack={handleBackToDusun} 
       />
     {:else if currentScreen === "navigasi" && selectedDusun && selectedRumah}
       <Navigasi 
