@@ -63,6 +63,7 @@
   .app-layout {
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,12 +75,13 @@
     width: 100%;
     max-width: 440px;
     height: 100%;
-    max-height: 100vh;
+    height: 100dvh;
     background-color: var(--bg-card);
     display: flex;
     flex-direction: column;
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
   }
 
   @media (min-width: 480px) {

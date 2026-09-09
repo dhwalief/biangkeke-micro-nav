@@ -157,19 +157,20 @@
     .nav-screen {
         display: flex;
         flex-direction: column;
-        padding: 18px 18px 20px 18px;
+        padding: 12px 16px 14px 16px;
         height: 100%;
         max-width: 440px;
         margin: 0 auto;
         box-sizing: border-box;
-        overflow-y: auto;
+        overflow: hidden; /* Bebas scroll */
     }
 
     .header {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        padding-bottom: 12px;
+        padding-bottom: 8px;
+        flex-shrink: 0;
     }
 
     .header-titles {
@@ -178,27 +179,27 @@
     }
 
     .dusun-label {
-        font-size: 13px;
+        font-size: 12px;
         color: var(--text-muted);
         font-weight: 500;
     }
 
     .dest-title {
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 700;
         color: var(--text-main);
-        margin: 2px 0 0 0;
+        margin: 1px 0 0 0;
         letter-spacing: -0.02em;
     }
 
     .exit-btn {
-        width: 34px;
-        height: 34px;
-        border-radius: 9px;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
         border: 1px solid var(--border-color);
         background: var(--bg-card);
         color: var(--text-muted);
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
         display: flex;
         align-items: center;
@@ -217,14 +218,16 @@
         height: 1px;
         background: var(--border-color);
         width: 100%;
-        margin-bottom: 14px;
+        margin-bottom: 8px;
+        flex-shrink: 0;
     }
 
     .progress-bar-container {
         display: flex;
-        gap: 6px;
+        gap: 5px;
         width: 100%;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
+        flex-shrink: 0;
     }
 
     .progress-segment {
@@ -240,21 +243,23 @@
     }
 
     .step-label {
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 500;
         color: var(--text-muted);
-        margin-bottom: 10px;
+        margin-bottom: 8px;
+        flex-shrink: 0;
     }
 
     .photo-frame {
         position: relative;
         width: 100%;
-        aspect-ratio: 4 / 3;
-        border-radius: 16px;
+        flex: 1; /* Mengisi sisa ruang secara fleksibel tanpa overflow */
+        min-height: 110px;
+        border-radius: 14px;
         overflow: hidden;
         background: var(--bg-subtle);
         border: 1px solid var(--border-color);
-        margin-bottom: 14px;
+        margin-bottom: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -271,47 +276,48 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 6px;
+        gap: 4px;
         color: var(--text-muted);
-        padding: 16px;
+        padding: 12px;
         text-align: center;
     }
 
     .placeholder-icon {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .placeholder-text {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .instruction-box {
-        margin-bottom: 18px;
-        min-height: 48px;
+        margin-bottom: 10px;
+        flex-shrink: 0;
     }
 
     .action-text {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 700;
         color: var(--text-main);
-        line-height: 1.35;
+        line-height: 1.3;
         margin: 0;
         letter-spacing: -0.01em;
     }
 
     .detail-text {
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 400;
         color: var(--text-muted);
-        line-height: 1.35;
-        margin: 4px 0 0 0;
+        line-height: 1.3;
+        margin: 2px 0 0 0;
     }
 
     .btn-group {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        /*margin-top: auto;*/
+        gap: 10px;
+        margin-top: auto; /* Selalu berada di bagian paling bawah layar */
+        flex-shrink: 0;
     }
 
     .nav-btn {
