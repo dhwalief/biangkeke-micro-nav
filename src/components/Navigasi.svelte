@@ -253,8 +253,8 @@
         position: relative;
         width: 100%;
         min-width: 0;
-        flex: 1;
-        min-height: 110px;
+        flex: 3; /* Rasio tinggi gambar 3:5 terhadap area visual */
+        min-height: 140px;
         border-radius: 14px;
         overflow: hidden;
         background: var(--bg-subtle);
