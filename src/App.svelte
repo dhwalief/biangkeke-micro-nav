@@ -79,6 +79,7 @@
     background-color: var(--bg-card);
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     overflow: hidden;

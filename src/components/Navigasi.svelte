@@ -30,7 +30,7 @@
                       urutan: 1,
                       aksi: "Mulai dari depan Kantor Desa",
                       detail: "Jalan lurus ke arah jalan utama",
-                      foto: "/img/kantor_desa.webp",
+                      foto: "/img/kantor_desa1.webp",
                   },
                   {
                       urutan: 2,
@@ -158,9 +158,8 @@
         display: flex;
         flex-direction: column;
         padding: 12px 16px 14px 16px;
+        width: 100%;
         height: 100%;
-        max-width: 440px;
-        margin: 0 auto;
         box-sizing: border-box;
         overflow: hidden; /* Bebas scroll */
     }
@@ -253,7 +252,8 @@
     .photo-frame {
         position: relative;
         width: 100%;
-        flex: 1; /* Mengisi sisa ruang secara fleksibel tanpa overflow */
+        min-width: 0;
+        flex: 1;
         min-height: 110px;
         border-radius: 14px;
         overflow: hidden;
@@ -263,6 +263,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        box-sizing: border-box;
     }
 
     .photo {
@@ -276,10 +277,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
         gap: 4px;
         color: var(--text-muted);
         padding: 12px;
         text-align: center;
+        box-sizing: border-box;
     }
 
     .placeholder-icon {
@@ -291,8 +296,10 @@
     }
 
     .instruction-box {
+        width: 100%;
         margin-bottom: 10px;
         flex-shrink: 0;
+        box-sizing: border-box;
     }
 
     .action-text {
@@ -313,11 +320,13 @@
     }
 
     .btn-group {
+        width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
         margin-top: auto; /* Selalu berada di bagian paling bawah layar */
         flex-shrink: 0;
+        box-sizing: border-box;
     }
 
     .nav-btn {

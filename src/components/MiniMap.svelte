@@ -56,6 +56,10 @@
           weight: 2
         }).addTo(map);
       }
+
+      setTimeout(() => {
+        map?.invalidateSize();
+      }, 50);
     } catch (err) {
       console.warn("Gagal memuat rute pada MiniMap:", err);
     }
@@ -102,6 +106,7 @@
   .minimap-wrapper {
     position: relative;
     width: 100%;
+    min-width: 0;
     height: 90px;
     border-radius: 12px;
     overflow: hidden;

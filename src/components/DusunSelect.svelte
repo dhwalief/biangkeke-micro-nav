@@ -35,6 +35,7 @@
     display: flex;
     flex-direction: column;
     padding: 24px 20px;
+    width: 100%;
     height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
