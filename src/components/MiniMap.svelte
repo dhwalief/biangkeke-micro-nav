@@ -156,8 +156,8 @@
 
   onMount(() => {
     map = L.map(mapContainer, {
-      zoomControl: false,
-      attributionControl: false,
+      zoomControl: true,
+      attributionControl: true,
       dragging: true,
       touchZoom: true,
       scrollWheelZoom: false,
@@ -168,7 +168,8 @@
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
-      opacity: 0.75
+      opacity: 0.75,
+      attribution: "@ OpenStreetMap"
     }).addTo(map);
 
     loadMapData();
@@ -308,7 +309,7 @@
 
   .map-controls {
     position: absolute;
-    bottom: 6px;
+    bottom: 25px;
     right: 6px;
     display: flex;
     flex-direction: column;
