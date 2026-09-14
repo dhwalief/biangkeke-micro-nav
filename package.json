@@ -23,5 +23,8 @@
     "exifreader": "^4.44.1",
     "leaflet": "^1.9.4",
     "svelte-gestures": "^5.2.2"
+  },
+  "allowScripts": {
+    "exifreader@4.44.1": true
   }
 }
