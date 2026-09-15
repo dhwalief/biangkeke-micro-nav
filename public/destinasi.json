@@ -1,24 +1,42 @@
 {
   "dusun": [
     {
-      "id": "gallea",
-      "nama": "Dusun Gallea",
+      "id": "biangkeke_lama",
+      "nama": "Dusun Biangkeke Lama",
       "rumah": [
         {
-          "id": "kadus-gallea-01",
-          "nama": "Rumah Kepala Dusun Gallea",
-          "rute_geojson": "routes/kadus-gallea.json",
-          "koordinat_akhir": [-5.55912, 119.99694],
+          "id": "kadus_biangkeke_lama",
+          "nama": "Rumah Kadus Biangkeke Lama",
+          "rute_geojson": "routes/kadus-biangkeke_lama.json",
+          "koordinat_akhir": [-5.55082, 120.00217],
           "langkah": [
             {
               "urutan": 1,
-              "instruksi": "Mulai dari Kantor Desa, jalan lurus ke arah barat.",
-              "foto": "/img/gallea01.webp"
+              "aksi": "Mulai dari depan Kantor Desa",
+              "detail": "Jalan lurus ke arah jalan utama",
+              "foto": "/img/kantor_desa1.webp",
+              "koordinat": [-5.55849, 119.99746]
             },
             {
               "urutan": 2,
-              "instruksi": "Belok kiri di lorong sebelah masjid berwarna hijau.",
-              "foto": "/img/gallea02.webp"
+              "aksi": "Lanjutkan mengikuti jalan utama",
+              "detail": "Melewati patokan pertama",
+              "foto": "/img/b.lama1.webp",
+              "koordinat": [-5.557842, 119.994597]
+            },
+            {
+              "urutan": 3,
+              "aksi": "Perhatikan persimpangan",
+              "detail": "Ikuti rute pada peta",
+              "foto": "/img/b.lama2.webp",
+              "koordinat": [-5.550142, 119.997872]
+            },
+            {
+              "urutan": 4,
+              "aksi": "Tiba di tujuan",
+              "detail": "Rumah Kadus Biangkeke Lama",
+              "foto": "/img/b.lama3.webp",
+              "koordinat": [-5.551006, 120.002144]
             }
           ]
         }
@@ -29,24 +47,54 @@
       "nama": "Dusun Bombong",
       "rumah": [
         {
-          "id": "kadus-bombong-01",
-          "nama": "Rumah Kepala Dusun Bombong",
+          "id": "kadus_bombong",
+          "nama": "Rumah Kadus Bombong",
           "rute_geojson": "routes/kadus-bombong.json",
           "koordinat_akhir": [-5.56092, 120.00495],
-          "langkah": []
-        }
-      ]
-    },
-    {
-      "id": "biangkeke_lama",
-      "nama": "Dusun Biangkeke Lama",
-      "rumah": [
-        {
-          "id": "kadus-biangkeke-lama-01",
-          "nama": "Rumah Kepala Dusun Biangkeke Lama",
-          "rute_geojson": "routes/kadus-biangkeke_lama.json",
-          "koordinat_akhir": [-5.55082, 120.00217],
-          "langkah": []
+          "langkah": [
+            {
+              "urutan": 1,
+              "aksi": "Mulai dari depan Kantor Desa",
+              "detail": "Jalan lurus menuju Dusun Bombong",
+              "foto": "/img/kantor_desa1.webp",
+              "koordinat": [-5.55849, 119.99746]
+            },
+            {
+              "urutan": 2,
+              "aksi": "Titik patokan 1",
+              "detail": "Terus ikuti jalan",
+              "foto": "/img/bombong1.webp",
+              "koordinat": [-5.560289, 120.005669]
+            },
+            {
+              "urutan": 3,
+              "aksi": "Titik patokan 2",
+              "detail": "Sesuai rute biru di peta",
+              "foto": "/img/bombong2.webp",
+              "koordinat": [-5.560564, 120.005683]
+            },
+            {
+              "urutan": 4,
+              "aksi": "Titik patokan 3",
+              "detail": "Perhatikan belokan",
+              "foto": "/img/bombong3.webp",
+              "koordinat": [-5.560656, 120.005706]
+            },
+            {
+              "urutan": 5,
+              "aksi": "Titik patokan 4",
+              "detail": "Mendekati area tujuan",
+              "foto": "/img/bombong4.webp",
+              "koordinat": [-5.560925, 120.005583]
+            },
+            {
+              "urutan": 6,
+              "aksi": "Tiba di tujuan",
+              "detail": "Rumah Kadus Bombong",
+              "foto": "/img/bombong5.webp",
+              "koordinat": [-5.560853, 120.00505]
+            }
+          ]
         }
       ]
     },
@@ -55,50 +103,81 @@
       "nama": "Dusun Erasayya",
       "rumah": [
         {
-          "id": "kadus-erasayya-01",
-          "nama": "Rumah Kepala Dusun Erasayya",
+          "id": "kadus_erasayya",
+          "nama": "Rumah Kadus Erasayya",
           "rute_geojson": "routes/kadus-erasayya.json",
           "koordinat_akhir": [-5.54167, 120.0224],
-          "langkah": []
+          "langkah": [
+            {
+              "urutan": 1,
+              "aksi": "Mulai dari depan Kantor Desa",
+              "detail": "Arahkan perjalanan menuju Erasayya",
+              "foto": "/img/kantor_desa1.webp",
+              "koordinat": [-5.55849, 119.99746]
+            },
+            {
+              "urutan": 2,
+              "aksi": "Patokan pertama Erasayya",
+              "detail": "Ikuti jalan desa",
+              "foto": "/img/erasayya1.webp",
+              "koordinat": [-5.560778, 120.008467]
+            },
+            {
+              "urutan": 3,
+              "aksi": "Patokan kedua Erasayya",
+              "detail": "Terus ikuti navigasi peta",
+              "foto": "/img/erasayya2.webp",
+              "koordinat": [-5.540156, 120.016936]
+            },
+            {
+              "urutan": 4,
+              "aksi": "Tiba di tujuan",
+              "detail": "Rumah Kadus Erasayya",
+              "foto": "/img/erasayya3.webp",
+              "koordinat": [-5.541708, 120.022506]
+            }
+          ]
         }
       ]
     },
     {
-      "id": "makkaninong",
-      "nama": "Dusun Makkaninong",
+      "id": "gallea",
+      "nama": "Dusun Gallea",
       "rumah": [
         {
-          "id": "kadus-makkaninong-01",
-          "nama": "Rumah Kepala Dusun Makkaninong",
-          "rute_geojson": "routes/kadus-makkaninong.json",
-          "koordinat_akhir": [-5.56043, 120.00277],
-          "langkah": []
-        }
-      ]
-    },
-    {
-      "id": "perumputan_baru",
-      "nama": "Dusun Perumputan Baru",
-      "rumah": [
-        {
-          "id": "kadus-perumputan_baru-01",
-          "nama": "Rumah Kepala Dusun Perumputan Baru",
-          "rute_geojson": "routes/kadus-perumputan_baru.json",
-          "koordinat_akhir": [-5.53993, 120.01556],
-          "langkah": []
-        }
-      ]
-    },
-    {
-      "id": "samataring",
-      "nama": "Dusun Samataring",
-      "rumah": [
-        {
-          "id": "kadus-samataring-01",
-          "nama": "Rumah Kepala Dusun Samataring",
-          "rute_geojson": "routes/kadus-samataring.json",
-          "koordinat_akhir": [-5.54878, 120.01372],
-          "langkah": []
+          "id": "kadus_gallea",
+          "nama": "Rumah Kadus Gallea",
+          "rute_geojson": "routes/kadus-gallea.json",
+          "koordinat_akhir": [-5.55912, 119.99694],
+          "langkah": [
+            {
+              "urutan": 1,
+              "aksi": "Mulai dari depan Kantor Desa",
+              "detail": "Perjalanan menuju Dusun Gallea",
+              "foto": "/img/kantor_desa1.webp",
+              "koordinat": [-5.55849, 119.99746]
+            },
+            {
+              "urutan": 2,
+              "aksi": "Melewati patokan awal",
+              "detail": "Area Gallea",
+              "foto": "/img/gallea01.webp",
+              "koordinat": [-5.33334, 120.00033]
+            },
+            {
+              "urutan": 3,
+              "aksi": "Patokan selanjutnya",
+              "detail": "Ikuti jalan utama",
+              "foto": "/img/gallea1.webp"
+            },
+            {
+              "urutan": 4,
+              "aksi": "Tiba di tujuan",
+              "detail": "Rumah Kadus Gallea",
+              "foto": "/img/gallea2.webp",
+              "koordinat": [-5.559028, 119.996964]
+            }
+          ]
         }
       ]
     },
@@ -107,11 +186,145 @@
       "nama": "Dusun Lambocca",
       "rumah": [
         {
-          "id": "kadus-lambocca-01",
-          "nama": "Rumah Kepala Dusun Lambocca",
+          "id": "kadus_lambocca",
+          "nama": "Rumah Kadus Lambocca",
           "rute_geojson": "routes/kadus-lambocca.json",
           "koordinat_akhir": [-5.56035, 120.00065],
-          "langkah": []
+          "langkah": [
+            {
+              "urutan": 1,
+              "aksi": "Mulai dari depan Kantor Desa",
+              "detail": "Menuju rute Lambocca",
+              "foto": "/img/kantor_desa1.webp",
+              "koordinat": [-5.55849, 119.99746]
+            },
+            {
+              "urutan": 2,
+              "aksi": "Patokan jalan Lambocca",
+              "detail": "Terus lurus ikuti peta",
+              "foto": "/img/lambocca1.webp",
+              "koordinat": [-5.559244, 120.000856]
+            },
+            {
+              "urutan": 3,
+              "aksi": "Tiba di tujuan",
+              "detail": "Rumah Kadus Lambocca",
+              "foto": "/img/lambocca2.webp",
+              "koordinat": [-5.560206, 120.000703]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "makkaninong",
+      "nama": "Dusun Makkaninong",
+      "rumah": [
+        {
+          "id": "kadus_makkaninong",
+          "nama": "Rumah Kadus Makkaninong",
+          "rute_geojson": "routes/kadus-makkaninong.json",
+          "koordinat_akhir": [-5.56043, 120.00277],
+          "langkah": [
+            {
+              "urutan": 1,
+              "aksi": "Mulai dari depan Kantor Desa",
+              "detail": "Akses rute ke Makkaninong",
+              "foto": "/img/kantor_desa1.webp",
+              "koordinat": [-5.55849, 119.99746]
+            },
+            {
+              "urutan": 2,
+              "aksi": "Patokan pertama",
+              "detail": "Ikuti jalur di minimap",
+              "foto": "/img/makkaninong1.webp",
+              "koordinat": [-5.559611, 120.002831]
+            },
+            {
+              "urutan": 3,
+              "aksi": "Tiba di tujuan",
+              "detail": "Rumah Kadus Makkaninong",
+              "foto": "/img/makkaninong2.webp",
+              "koordinat": [-5.560417, 120.002786]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "perumputan_baru",
+      "nama": "Dusun Perumputan Baru",
+      "rumah": [
+        {
+          "id": "kadus_perumputan",
+          "nama": "Rumah Kadus Perumputan Baru",
+          "rute_geojson": "routes/kadus-perumputan_baru.json",
+          "koordinat_akhir": [-5.53981, 120.01467],
+          "langkah": [
+            {
+              "urutan": 1,
+              "aksi": "Mulai dari depan Kantor Desa",
+              "detail": "Rute mengarah ke Perumputan Baru",
+              "foto": "/img/kantor_desa1.webp",
+              "koordinat": [-5.55849, 119.99746]
+            },
+            {
+              "urutan": 2,
+              "aksi": "Patokan jalan masuk",
+              "detail": "Amati persimpangan",
+              "foto": "/img/perumputan1.webp",
+              "koordinat": [-5.560778, 120.008467]
+            },
+            {
+              "urutan": 3,
+              "aksi": "Lanjutkan perjalanan",
+              "detail": "Mendekati area tujuan",
+              "foto": "/img/perumputan2.webp",
+              "koordinat": [-5.540086, 120.017181]
+            },
+            {
+              "urutan": 4,
+              "aksi": "Tiba di tujuan",
+              "detail": "Rumah Kadus Perumputan Baru",
+              "foto": "/img/perumputan3.webp",
+              "koordinat": [-5.539817, 120.014708]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "samataring",
+      "nama": "Dusun Samataring",
+      "rumah": [
+        {
+          "id": "kadus_samataring",
+          "nama": "Rumah Kadus Samataring",
+          "rute_geojson": "routes/kadus-samataring.json",
+          "koordinat_akhir": [-5.54878, 120.01372],
+          "langkah": [
+            {
+              "urutan": 1,
+              "aksi": "Mulai dari depan Kantor Desa",
+              "detail": "Rute menuju Samataring",
+              "foto": "/img/kantor_desa1.webp",
+              "koordinat": [-5.55849, 119.99746]
+            },
+            {
+              "urutan": 2,
+              "aksi": "Melewati patokan pertama",
+              "detail": "Ikuti garis putus-putus pada peta",
+              "foto": "/img/samataring1.webp",
+              "koordinat": [-5.560778, 120.008467]
+            },
+            {
+              "urutan": 3,
+              "aksi": "Tiba di tujuan",
+              "detail": "Rumah Kadus Samataring",
+              "foto": "/img/samataring2.webp",
+              "koordinat": [-5.54878, 120.01372]
+            }
+          ]
         }
       ]
     }
