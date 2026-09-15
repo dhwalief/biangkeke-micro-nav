@@ -1,89 +1,121 @@
-<script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from './assets/vite.svg'
-  import heroImg from './assets/hero.png'
-  import Counter from './lib/Counter.svelte'
+<script lang="ts">
+  import { onMount } from "svelte";
+  import DusunSelect from "./components/DusunSelect.svelte";
+  import Navigasi from "./components/Navigasi.svelte";
+
+  type Screen = "dusun" | "navigasi";
+
+  let dusunList: any[] = [];
+  let loading = true;
+  let currentScreen: Screen = "dusun";
+  let selectedDusun: any = null;
+  let selectedRumah: any = null;
+
+  onMount(async () => {
+    try {
+      let res = await fetch("/data.json");
+      if (!res.ok) {
+        res = await fetch("/destinasi.json");
+      }
+      const data = await res.json();
+      dusunList = data.dusun || [];
+    } catch (err) {
+      console.error("Gagal mengambil data dusun:", err);
+    } finally {
+      loading = false;
+    }
+  });
+
+  function handleSelectDusun(dusun: any) {
+    selectedDusun = dusun;
+    selectedRumah = dusun.rumah && dusun.rumah.length > 0 ? dusun.rumah[0] : null;
+    currentScreen = "navigasi";
+  }
+
+  function handleExitToDusun() {
+    currentScreen = "dusun";
+  }
 </script>
 
-<section id="center">
-  <div class="hero">
-    <img src={heroImg} class="base" width="170" height="179" alt="" />
-    <img src={svelteLogo} class="framework" alt="Svelte logo" />
-    <img src={viteLogo} class="vite" alt="Vite logo" />
+<main class="app-layout">
+  <div class="mobile-viewport">
+    {#if loading}
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Memuat navigasi desa...</p>
+      </div>
+    {:else if currentScreen === "dusun"}
+      <DusunSelect 
+        {dusunList} 
+        onSelect={handleSelectDusun} 
+      />
+    {:else if currentScreen === "navigasi" && selectedDusun && selectedRumah}
+      <Navigasi 
+        namaDusun={selectedDusun.nama} 
+        rumah={selectedRumah} 
+        onExit={handleExitToDusun} 
+      />
+    {/if}
   </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/App.svelte</code> and save to test <code>HMR</code></p>
-  </div>
-  <Counter />
-</section>
+</main>
 
-<div class="ticks"></div>
+<style>
+  .app-layout {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-app);
+    overflow: hidden;
+  }
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true">
-      <use href="/icons.svg#documentation-icon"></use>
-    </svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank" rel="noreferrer">
-          <img class="logo" src={viteLogo} alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://svelte.dev/" target="_blank" rel="noreferrer">
-          <img class="button-icon" src={svelteLogo} alt="" />
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true">
-      <use href="/icons.svg#social-icon"></use>
-    </svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li>
-        <a href="https://github.com/vitejs/vite" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#github-icon"></use>
-          </svg>
-          GitHub
-        </a>
-      </li>
-      <li>
-        <a href="https://chat.vite.dev/" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#discord-icon"></use>
-          </svg>
-          Discord
-        </a>
-      </li>
-      <li>
-        <a href="https://x.com/vite_js" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#x-icon"></use>
-          </svg>
-          X.com
-        </a>
-      </li>
-      <li>
-        <a href="https://bsky.app/profile/vite.dev" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#bluesky-icon"></use>
-          </svg>
-          Bluesky
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+  .mobile-viewport {
+    width: 100%;
+    max-width: 440px;
+    height: 100%;
+    height: 100dvh;
+    background-color: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
 
-<div class="ticks"></div>
-<section id="spacer"></section>
+  @media (min-width: 480px) {
+    .mobile-viewport {
+      height: 92vh;
+      max-height: 840px;
+      border-radius: 28px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+  }
+
+  .loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
