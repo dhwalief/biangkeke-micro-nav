@@ -1,10 +1,18 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
+  import { createEventDispatcher } from "svelte";
   import "leaflet/dist/leaflet.css";
   import L from "leaflet";
 
   export let ruteGeojson: string;
   export let koordinatAkhir: [number, number];
+  export let targetKoordinat: [number, number] | null = null;
+  export let stepIndex: number = 0;
+
+  const dispatch = createEventDispatcher<{ autoAdvance: void }>();
+
+  const PROXIMITY_RADIUS = 18;
+  const DEBOUNCE_MS = 2500;
 
   let mapContainer: HTMLElement;
   let map: L.Map | null = null;
@@ -16,6 +24,72 @@
   let isFollowingUser = true;
   let gpsActive = false;
   let gpsAccuracy: number | null = null;
+
+  let proximityTimer: ReturnType<typeof setTimeout> | null = null;
+  let inProximity = false;
+  let advanceMarker: L.Marker | null = null;
+
+  function haversine(a: [number, number], b: [number, number]): number {
+    const R = 6371000;
+    const toRad = (d: number) => (d * Math.PI) / 180;
+    const dLat = toRad(b[0] - a[0]);
+    const dLon = toRad(b[1] - a[1]);
+    const x =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRad(a[0])) * Math.cos(toRad(b[0])) * Math.sin(dLon / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+  }
+
+  function showAdvanceBlink(pos: [number, number]) {
+    if (!map) return;
+    if (advanceMarker) {
+      map.removeLayer(advanceMarker);
+      advanceMarker = null;
+    }
+    const icon = L.divIcon({
+      className: "advance-indicator",
+      html: '<div class="advance-dot"></div>',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8],
+    });
+    advanceMarker = L.marker(pos, { icon, zIndexOffset: 999 }).addTo(map);
+    setTimeout(() => {
+      if (advanceMarker && map) {
+        map.removeLayer(advanceMarker);
+        advanceMarker = null;
+      }
+    }, 1500);
+  }
+
+  function checkProximity(pos: [number, number]) {
+    if (!targetKoordinat) return;
+    const dist = haversine(pos, targetKoordinat);
+    if (dist <= PROXIMITY_RADIUS) {
+      if (!inProximity) {
+        inProximity = true;
+        proximityTimer = setTimeout(() => {
+          dispatch("autoAdvance");
+          showAdvanceBlink(targetKoordinat!);
+          inProximity = false;
+          proximityTimer = null;
+        }, DEBOUNCE_MS);
+      }
+    } else {
+      if (proximityTimer) {
+        clearTimeout(proximityTimer);
+        proximityTimer = null;
+      }
+      inProximity = false;
+    }
+  }
+
+  $: if (stepIndex !== undefined) {
+    if (proximityTimer) {
+      clearTimeout(proximityTimer);
+      proximityTimer = null;
+    }
+    inProximity = false;
+  }
 
   async function loadMapData() {
     if (!map || !ruteGeojson) return;
@@ -89,6 +163,8 @@
       gpsAccuracy = Math.round(e.accuracy);
       const latlng: [number, number] = [e.latlng.lat, e.latlng.lng];
       userLatLng = latlng;
+
+      checkProximity(latlng);
 
       // Marker posisi pengguna (dot biru dengan pulse)
       if (!userMarker) {
@@ -185,6 +261,7 @@
 
   onDestroy(() => {
     resizeObserver?.disconnect();
+    if (proximityTimer) clearTimeout(proximityTimer);
     if (map) {
       map.stopLocate();
       map.remove();
@@ -224,7 +301,10 @@
       title={isFollowingUser ? "Mengikuti posisi Anda" : "Pusatkan ke lokasi saya"}
       aria-label="Pusatkan ke lokasi saya"
     >
-      🎯
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+      </svg>
     </button>
     <button 
       type="button" 
@@ -233,7 +313,10 @@
       title="Lihat seluruh rute"
       aria-label="Lihat seluruh rute"
     >
-      🗺️
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 17l6-6-6-6"/>
+        <path d="M10 17l6-6-6-6"/>
+      </svg>
     </button>
   </div>
 </div>
@@ -403,5 +486,26 @@
   @keyframes userPulseRing {
     0% { transform: scale(0.6); opacity: 0.9; }
     100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  /* Advance Indicator */
+  :global(.advance-indicator) {
+    background: transparent;
+    border: none;
+  }
+
+  :global(.advance-dot) {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #3b82f6;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+    animation: advancePulse 0.6s ease-in-out 2;
+  }
+
+  @keyframes advancePulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
   }
 </style>

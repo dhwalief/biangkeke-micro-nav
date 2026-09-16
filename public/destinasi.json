@@ -159,19 +159,12 @@
             },
             {
               "urutan": 2,
-              "aksi": "Melewati patokan awal",
-              "detail": "Area Gallea",
-              "foto": "/img/gallea01.webp",
-              "koordinat": [-5.33334, 120.00033]
-            },
-            {
-              "urutan": 3,
               "aksi": "Patokan selanjutnya",
               "detail": "Ikuti jalan utama",
               "foto": "/img/gallea1.webp"
             },
             {
-              "urutan": 4,
+              "urutan": 3,
               "aksi": "Tiba di tujuan",
               "detail": "Rumah Kadus Gallea",
               "foto": "/img/gallea2.webp",
