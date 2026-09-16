@@ -13,10 +13,7 @@
 
   onMount(async () => {
     try {
-      let res = await fetch("/data.json");
-      if (!res.ok) {
-        res = await fetch("/destinasi.json");
-      }
+      const res = await fetch("/destinasi.json");
       const data = await res.json();
       dusunList = data.dusun || [];
     } catch (err) {

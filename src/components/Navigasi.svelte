@@ -6,6 +6,7 @@
         aksi: string;
         detail: string;
         foto?: string;
+        koordinat?: [number, number];
     }
 
     interface Rumah {
@@ -42,6 +43,7 @@
 
     $: totalSteps = langkahList.length;
     $: aktif = langkahList[currentStep];
+    $: hasFoto = typeof aktif.foto === "string" && aktif.foto.trim().length > 0;
 
     function next() {
         if (currentStep < totalSteps - 1) {
@@ -60,6 +62,24 @@
         target.src =
             "https://images.unsplash.com/photo-1590740608753-ff827f333671?w=800&auto=format&fit=crop&q=80";
     }
+
+    let autoAdvancing = false;
+    let autoAdvanceTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function handleAutoAdvance() {
+        if (currentStep < totalSteps - 1) {
+            currentStep++;
+            autoAdvancing = true;
+            if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
+            autoAdvanceTimer = setTimeout(() => {
+                autoAdvancing = false;
+            }, 1500);
+        }
+    }
+
+    $: nextTargetKoordinat = currentStep < totalSteps - 1
+        ? langkahList[currentStep + 1]?.koordinat ?? null
+        : null;
 </script>
 
 <div class="nav-screen">
@@ -86,6 +106,9 @@
     <MiniMap
         ruteGeojson={rumah.rute_geojson}
         koordinatAkhir={rumah.koordinat_akhir}
+        targetKoordinat={nextTargetKoordinat}
+        stepIndex={currentStep}
+        on:autoAdvance={handleAutoAdvance}
     />
 
     <!-- Segmented Progress Bar -->
@@ -101,13 +124,16 @@
     <!-- Label Langkah -->
     <div class="step-label">
         Langkah {currentStep + 1} dari {totalSteps}
+        {#if autoAdvancing}
+            <span class="auto-badge">otomatis</span>
+        {/if}
     </div>
 
     <!-- Foto Patokan (Fokus Utama) -->
     <div class="photo-frame">
-        {#if aktif.foto}
+        {#if hasFoto}
             <img
-                src={aktif.foto}
+                src={aktif.foto!.trim()}
                 alt="Foto Patokan Jalan"
                 class="photo"
                 on:error={handleImgError}
@@ -247,6 +273,26 @@
         color: var(--text-muted);
         margin-bottom: 8px;
         flex-shrink: 0;
+    }
+
+    .auto-badge {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--primary-blue);
+        background: rgba(30, 64, 175, 0.08);
+        padding: 1px 6px;
+        border-radius: 4px;
+        margin-left: 6px;
+        vertical-align: middle;
+        animation: fadeOutBadge 1.5s ease forwards;
+    }
+
+    @keyframes fadeOutBadge {
+        0% { opacity: 0; transform: translateY(2px); }
+        15% { opacity: 1; transform: translateY(0); }
+        80% { opacity: 1; }
+        100% { opacity: 0; }
     }
 
     .photo-frame {
